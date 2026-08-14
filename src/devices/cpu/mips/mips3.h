@@ -319,6 +319,12 @@ public:
 	uint32_t mips3drc_get_options();
 	void mips3drc_add_hotspot(offs_t pc, uint32_t opcode, uint32_t cycles);
 
+	// invalidate all compiled blocks; required after ROM contents change under
+	// the CPU, because blocks compiled from read-only address ranges are never
+	// revalidated (see generate_checksum_block in mips3drc.cpp) and the CACHE
+	// instruction compiles to a no-op
+	void mips3drc_flush_cache() { m_drc_cache_dirty = true; }
+
 protected:
 	// device_t implementation
 	virtual void device_start() override ATTR_COLD;

@@ -39966,6 +39966,9 @@ kinst
 kinst2
 kinst2uk
 
+@source:rare/kinst_multi.cpp
+kinstmulti
+
 @source:rare/xtheball.cpp
 xtheball
 
